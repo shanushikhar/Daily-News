@@ -1,4 +1,4 @@
-import { api_key, category_technology, category_general, country, article_url } from '../rest_config'
+import { api_key, category_technology, category_general, country, article_url } from '../config/rest_config'
 
 export async function getGeneralArticles() {
     try {

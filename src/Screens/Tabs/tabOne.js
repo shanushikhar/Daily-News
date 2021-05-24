@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { getGeneralArticles } from '../../service/news'
-import { FlatList, Image, View, Text } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
+import RenderList from '../../Components/RenderList';
+import Loading from '../../Components/Loading';
 
 export default class Tabone extends Component {
 
@@ -13,23 +15,33 @@ export default class Tabone extends Component {
         getGeneralArticles().then(data => this.setState({ data, isLoading: false }))
     }
 
+    showDescription = (data) => {
+        this.props.navigationFromTab.navigate('details', {
+            data
+        })
+    }
+
     render() {
 
+        if (this.state.isLoading)
+            return <Loading />
+
         return (
-            <FlatList
+            <FlatList showsVerticalScrollIndicator={false}
+                style={{ marginHorizontal: 10 }}
                 ItemSeparatorComponent={(props) => {
-                    return (<View style={{ height: 1, backgroundColor: 'green' }} />);
+                    return (<View style={{ height: 1, backgroundColor: 'white' }} />);
                 }}
                 data={this.state.data}
                 keyExtractor={x => x.title}
                 renderItem={({ item }) => {
-                    return <View style={{ flexDirection: 'row', alignItems: 'center', paddingHorizontal: 2, paddingVertical: 2, }}>
-                        <Image source={{ uri: item.urlToImage || 'https://i.pinimg.com/originals/01/3a/ff/013affc03f365278675d89949356c227.jpg' }} style={{ width: 50, height: 50, borderRadius: 25, marginRight: 10, marginLeft: 3 }} />
-                        <View style={{ flex: 1 }}>
-                            <Text style={{ fontWeight: 'bold', }} numberOfLines={1}   >{item.title}</Text>
-                            <Text style={{ color: 'grey' }} numberOfLines={2} >{item.description || '----- No more description found -----'}</Text>
-                        </View>
-                    </View>
+                    return <RenderList
+                        imageUrl={item.urlToImage}
+                        title={item.title}
+                        description={item.description}
+                        date={item.publishedAt}
+                        onClick={() => this.showDescription(item)}
+                    />
                 }}
 
             // renderItem={({ item }) => (

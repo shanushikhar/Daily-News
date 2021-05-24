@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import TabScreen from './src/Screens/TabScreen'
-import Tabs from './src/Navigation'
+import Nav from './src/Navigation/index'
 
 // create a component
 class App extends Component {
   render() {
     return (
-      <TabScreen />
+      <Nav />
     );
   }
 }

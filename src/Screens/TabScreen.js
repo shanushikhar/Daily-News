@@ -21,13 +21,13 @@ export default class TabsExample extends Component {
                 </Header>
                 <Tabs renderTabBar={renderTabBar} tabBarUnderlineStyle={{ backgroundColor: 'red' }}>
                     <Tab textStyle={{ color: 'white' }} activeTextStyle={{ color: 'white' }} activeTabStyle={{ backgroundColor: '#009487' }} tabStyle={{ backgroundColor: '#009387' }} heading="General">
-                        <Tab1 />
+                        <Tab1 navigationFromTab={this.props.navigation} />
                     </Tab>
                     <Tab textStyle={{ color: 'white' }} activeTextStyle={{ color: 'white' }} activeTabStyle={{ backgroundColor: '#009487' }} tabStyle={{ backgroundColor: '#009387' }} heading="Tech">
-                        <Tab2 />
+                        <Tab2 navigationFromTab={this.props.navigation}/>
                     </Tab>
                     <Tab textStyle={{ color: 'white' }} activeTextStyle={{ color: 'white' }} activeTabStyle={{ backgroundColor: '#009487' }} tabStyle={{ backgroundColor: '#009387' }} heading="USA">
-                        <Tab3 />
+                        <Tab3 navigationFromTab={this.props.navigation}/>
                     </Tab>
                 </Tabs>
             </Container>

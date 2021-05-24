@@ -1,0 +1,6 @@
+export const article_url = 'https://newsapi.org/v2/top-headlines'
+export const country = 'in'
+export const category_general = 'general'
+export const category_technology = 'technology'
+export const top_headlines = 'top-headlines'
+export const api_key = '8190df9eb51445228e397e4185311a66'

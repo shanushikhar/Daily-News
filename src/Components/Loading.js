@@ -7,7 +7,7 @@ class Loading extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ActivityIndicator size="large" color="#00ff00" />
+                <ActivityIndicator size="large" color="tomato" />
                 <Text>Please wait...</Text>
             </View>
         );

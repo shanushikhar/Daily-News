@@ -3,6 +3,8 @@ import { Container, Header, Tab, Tabs, Left, Body, Title, DefaultTabBar } from '
 import Tab1 from './Tabs/tabOne';
 import Tab2 from './Tabs/tabTwo';
 import Tab3 from './Tabs/tabThree';
+import { colors } from '../Constants';
+
 
 const renderTabBar = (props) => {
     props.tabStyle = Object.create(props.tabStyle);
@@ -14,20 +16,20 @@ export default class TabsExample extends Component {
     render() {
         return (
             <Container>
-                <Header androidStatusBarColor="tomato" style={{ backgroundColor: '#009387' }} hasTabs >
+                <Header androidStatusBarColor={colors.primary} style={{ backgroundColor: colors.accent }} hasTabs >
                     <Body>
-                        <Title style={{ color: 'white', alignSelf: 'center' }}>Daily News</Title>
+                        <Title style={{ color: colors.secondary, alignSelf: 'center' }}>Daily News</Title>
                     </Body>
                 </Header>
-                <Tabs renderTabBar={renderTabBar} tabBarUnderlineStyle={{ backgroundColor: 'red' }}>
-                    <Tab textStyle={{ color: 'white' }} activeTextStyle={{ color: 'white' }} activeTabStyle={{ backgroundColor: '#009487' }} tabStyle={{ backgroundColor: '#009387' }} heading="General">
+                <Tabs renderTabBar={renderTabBar} tabBarUnderlineStyle={{ backgroundColor: 'tomato' }}>
+                    <Tab textStyle={{ color: colors.secondary }} activeTextStyle={{ color: colors.secondary }} activeTabStyle={{ backgroundColor: colors.accent }} tabStyle={{ backgroundColor: '#009387' }} heading="General">
                         <Tab1 navigationFromTab={this.props.navigation} />
                     </Tab>
-                    <Tab textStyle={{ color: 'white' }} activeTextStyle={{ color: 'white' }} activeTabStyle={{ backgroundColor: '#009487' }} tabStyle={{ backgroundColor: '#009387' }} heading="Tech">
-                        <Tab2 navigationFromTab={this.props.navigation}/>
+                    <Tab textStyle={{ color: colors.secondary }} activeTextStyle={{ color: colors.secondary }} activeTabStyle={{ backgroundColor: colors.accent }} tabStyle={{ backgroundColor: '#009387' }} heading="Tech">
+                        <Tab2 navigationFromTab={this.props.navigation} />
                     </Tab>
-                    <Tab textStyle={{ color: 'white' }} activeTextStyle={{ color: 'white' }} activeTabStyle={{ backgroundColor: '#009487' }} tabStyle={{ backgroundColor: '#009387' }} heading="USA">
-                        <Tab3 navigationFromTab={this.props.navigation}/>
+                    <Tab textStyle={{ color: colors.secondary }} activeTextStyle={{ color: colors.secondary }} activeTabStyle={{ backgroundColor: colors.accent }} tabStyle={{ backgroundColor: '#009387' }} heading="USA">
+                        <Tab3 navigationFromTab={this.props.navigation} />
                     </Tab>
                 </Tabs>
             </Container>

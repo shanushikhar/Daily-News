@@ -1,7 +1,5 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import TabScreen from './src/Screens/TabScreen'
 import Nav from './src/Navigation/index'
 
 // create a component

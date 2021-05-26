@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image'
 import moment from 'moment'
+import { colors } from '../Constants';
 
-// create a component
+// demo image => 'https://i.pinimg.com/originals/01/3a/ff/013affc03f365278675d89949356c227.jpg'
 class RenderList extends Component {
 
     dateModifier = (index) => {
@@ -19,7 +20,7 @@ class RenderList extends Component {
             return insertVal(a, -5, ',')
         }
 
-        return <Text style={{ fontWeight: 'bold', color: 'grey', flex: 1 }}>{date()}   .   {moment(index).format('LT')} </Text>
+        return <Text style={{ fontWeight: 'bold', color: colors.fontColor, flex: 1 }}>{date()}   .   {moment(index).format('LT')} </Text>
     }
 
     render() {
@@ -29,7 +30,7 @@ class RenderList extends Component {
                     <FastImage
                         style={styles.image}
                         source={{
-                            uri: this.props.imageUrl || 'https://i.pinimg.com/originals/01/3a/ff/013affc03f365278675d89949356c227.jpg',
+                            uri: this.props.imageUrl || 'https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg',
                             priority: FastImage.priority.normal,
                             cache: FastImage.cacheControl.immutable
                         }}
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', marginVertical: 8
     },
     description: {
-        color: 'grey'
+        color: colors.fontColor
     }
 });
 

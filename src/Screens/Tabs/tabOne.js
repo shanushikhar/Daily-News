@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { getGeneralArticles } from '../../service/news'
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, RefreshControl } from 'react-native';
 import RenderList from '../../Components/RenderList';
 import Loading from '../../Components/Loading';
+import { colors } from '../../Constants';
 
 export default class Tabone extends Component {
 
     state = {
         isLoading: true,
-        data: null
+        data: null,
+        refreshing: true
     }
 
+
     componentDidMount = () => {
-        getGeneralArticles().then(data => this.setState({ data, isLoading: false }))
+        this.getData()
     }
 
     showDescription = (data) => {
@@ -20,6 +23,18 @@ export default class Tabone extends Component {
             data
         })
     }
+
+    getData = () => {
+        getGeneralArticles().then(data => this.setState({ data, isLoading: false, refreshing: false }))
+    }
+ 
+    onRefresh = () => {
+        //Clear old data of the list
+        this.setState({ data: [] })
+        //Call the Service to get the latest data
+        this.getData();
+    };
+
 
     render() {
 
@@ -30,7 +45,7 @@ export default class Tabone extends Component {
             <FlatList showsVerticalScrollIndicator={false}
                 style={{ marginHorizontal: 10 }}
                 ItemSeparatorComponent={(props) => {
-                    return (<View style={{ height: 1, backgroundColor: 'white' }} />);
+                    return (<View style={{ height: 1, backgroundColor: colors.secondary }} />);
                 }}
                 data={this.state.data}
                 keyExtractor={x => x.title}
@@ -43,6 +58,16 @@ export default class Tabone extends Component {
                         onClick={() => this.showDescription(item)}
                     />
                 }}
+                refreshControl={
+                    <RefreshControl
+                        //refresh control used for the Pull to Refresh
+                        // title="Pull to refresh"
+                        // tintColor="red" titleColor="red"
+                        colors={[colors.primary]}
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh.bind(this)}
+                    />
+                }
 
             // renderItem={({ item }) => (
             //     <View>
